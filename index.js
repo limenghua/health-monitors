@@ -1,4 +1,5 @@
-var healthCheckSystem = require('health-check-system');
+const healthCheckSystem = require('health-check-system');
+const report = require('./report');
 
 var configuration = {
     mongodb: [
@@ -61,10 +62,10 @@ function doMonitor(){
 
     healthCheckSystem.do(configuration)
     .then(function (result){
-        console.log(result);
+        report.ouput(result);
     })
     .catch(function (error){
-        console.log(error)
+        report.error(result);
     });
 
     setTimeout(doMonitor,secondsInterval*1000);
