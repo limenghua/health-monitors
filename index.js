@@ -16,13 +16,12 @@ var configuration = {
     elasticSearch:[
         {
             name:'elasticSearch1',
-            host:{
-                host:'http://elasticsearch:elasticsearch@10.0.0.200:9200'
-            }
+            host:'http://elasticsearch:elasticsearch@10.0.0.200:9200'
         }
     ],
     redis:[
         {
+            name:'redis1',
             host:'localhost',
             port:6379,
             options:{
@@ -33,17 +32,41 @@ var configuration = {
     ],
     api:[
         {
+            name:'webserver1',
             url:'http://10.0.0.200/',
-            method:'GET',
-            expectedStatusCode: 406
+            method:'GET'//,
+            //expectedStatusCode: 406
         }
     ]
 };
 
-healthCheckSystem.do(configuration)
+let stopMonitor = true;
+const secondsInterval = 10;
+start();
+
+return;
+
+function start(){
+    if(!stopMonitor)return;
+
+    stopMonitor = false;
+    doMonitor();
+}
+function stop(){
+    stopMonitor = true;
+}
+
+function doMonitor(){
+    if(stopMonitor)return;
+
+    healthCheckSystem.do(configuration)
     .then(function (result){
         console.log(result);
     })
     .catch(function (error){
         console.log(error)
-    })
+    });
+
+    setTimeout(doMonitor,secondsInterval*1000);
+}
+
