@@ -1,0 +1,23 @@
+{
+  "name": "nb-monitors",
+  "version": "1.0.0",
+  "description": "netbrain componets health chekc",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limenghua/nb-monitors.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limenghua/nb-monitors/issues"
+  },
+  "homepage": "https://github.com/limenghua/nb-monitors#readme",
+  "dependencies": {
+    "health-check-system": "0.0.8"
+  }
+}
