@@ -1,4 +1,4 @@
-const logger = require('./logger');
+const logger = require('../util/logger');
 
 function output(result){
     let health = result.health ;
