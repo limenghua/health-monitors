@@ -1,0 +1,21 @@
+{
+    "mongodb": [{
+        "name": "mongodb1",
+        "url": "mongodb://10.10.0.48:27017/admin"
+    }],
+    "rabbitMq": [{
+        "name": "rabbitMq1",
+        "url": "amqp://admin:admin@10.10.3.143:5672"
+    }],
+    "elasticSearch": [
+    ],
+    "redis": [{
+        "name": "redis1",
+        "host": "10.10.3.143",
+        "port": 6379,
+        "options": {
+            "password": "admin"
+        }
+
+    }] 
+}

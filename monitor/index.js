@@ -1,46 +1,16 @@
 const healthCheckSystem = require('health-check-system');
 const report = require('./report');
 const logger = require('../util/logger');
+const path = require('path');
+const fs = require('fs');
 
 module.exports={
     start,
     stop
 };
 
-var configuration = {
-    mongodb: [{
-        name: 'mongodb1',
-        //url: 'mongodb://mongodb:mongodb@10.10.0.48:27017/admin'
-        url: 'mongodb://10.10.0.48:27017/admin'
-    }],
-    rabbitMq: [{
-        name: 'rabbitMq1',
-        url: 'amqp://admin:admin@10.10.3.143:5672'
-    }],
-    elasticSearch: [
-        // {
-        //     name:'elasticSearch1',
-        //     host:'http://elasticsearch:elasticsearch@10.0.0.200:9200'
-        // }
-    ],
-    redis: [{
-        name: 'redis1',
-        host: '10.10.3.143',
-        port: 6379,
-        options: {
-            password: 'admin'
-        }
-
-    }] //,
-    // api:[
-    //     {
-    //         name:'webserver1',
-    //         url:'http://10.0.0.200/',
-    //         method:'GET'//,
-    //         //expectedStatusCode: 406
-    //     }
-    // ]
-};
+const filePath = __dirname + '/config.json';
+let configuration = JSON.parse(fs.readFileSync( filePath));
 
 let stopMonitor = true;
 const secondsInterval = 10;

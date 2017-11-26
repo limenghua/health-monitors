@@ -1,4 +1,6 @@
 const logger = require('../util/logger');
+const web = require('../web');
+const moment = require('moment');
 
 function output(result){
     let health = result.health ;
@@ -6,9 +8,13 @@ function output(result){
     let message = result.message;
 
     if(health){
-        logger.info(name + ":\t[OK] \t"+message);
+        let msg = name + ":\t[OK] \t"+message;
+        logger.info(msg);
+        web.ouput(moment().format() +":\t"+msg);
     }else{
-        logger.error(name+":\t[Error] \t"+message);
+        let msg = name+":\t[Error] \t"+message;
+        logger.error(msg);
+        web.ouput(moment().format() +":\t"+msg);
     }
 }
 
